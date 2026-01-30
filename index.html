@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoLab Systems – AI B2B Growth Engine</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* ================= RESET ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ================= VARIABLES ================= */
+:root{
+--blue:#3b82f6;
+--glow:#60a5fa;
+--dark:#020617;
+--card:rgba(15,23,42,.96);
+--text:#e5e7eb;
+--soft:#c7d2fe;
+}
+
+/* ================= BODY ================= */
+body{
+font-family:'Inter',sans-serif;
+background:#020617;
+color:var(--text);
+line-height:1.8;
+overflow-x:hidden;
+}
+
+/* ================= GLOW CURSOR ================= */
+.glow{
+position:fixed;
+width:400px;
+height:400px;
+border-radius:50%;
+pointer-events:none;
+background:radial-gradient(circle, rgba(96,165,250,.25), transparent 70%);
+mix-blend-mode:screen;
+transform:translate(-50%,-50%);
+z-index:1;
+}
+
+/* ================= HERO ================= */
+header{
+min-height:100vh;
+background:
+linear-gradient(rgba(2,6,23,.85),rgba(2,6,23,.95)),
+url("./autolab-bg.png") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+}
+
+/* MOVING AI GRID */
+header::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+repeating-linear-gradient(
+120deg,
+rgba(96,165,250,.12),
+rgba(96,165,250,.12) 1px,
+transparent 1px,
+transparent 100px
+);
+animation:gridMove 15s linear infinite;
+}
+
+@keyframes gridMove{
+from{background-position:0 0}
+to{background-position:1000px 1000px}
+}
+
+/* HERO CONTENT */
+.hero{
+position:relative;
+z-index:2;
+text-align:center;
+max-width:1200px;
+padding:40px;
+}
+
+.hero h1{
+font-size:5rem;
+color:var(--glow);
+text-shadow:0 0 60px rgba(96,165,250,1);
+margin-bottom:30px;
+}
+
+.hero p{
+font-size:1.8rem;
+color:var(--soft);
+margin-bottom:50px;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+padding:22px 70px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--blue),var(--glow));
+color:white;
+text-decoration:none;
+font-weight:800;
+font-size:1.15rem;
+box-shadow:0 0 80px rgba(59,130,246,1);
+transition:.35s;
+}
+
+.btn:hover{
+transform:scale(1.18);
+box-shadow:0 0 120px rgba(96,165,250,1);
+}
+
+/* ================= SECTION ================= */
+section{
+max-width:1350px;
+margin:auto;
+padding:140px 20px;
+}
+
+/* ================= CARD ================= */
+.card{
+background:var(--card);
+padding:80px;
+border-radius:50px;
+margin-bottom:100px;
+border:1px solid rgba(96,165,250,.25);
+box-shadow:0 0 120px rgba(59,130,246,.4);
+opacity:0;
+transform:translateY(120px);
+transition:1.2s;
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card h2{
+font-size:3.6rem;
+margin-bottom:35px;
+color:var(--glow);
+text-shadow:0 0 35px rgba(96,165,250,1);
+}
+
+/* BIG DEFINITION */
+.definition{
+font-size:1.9rem;
+font-weight:800;
+color:#f8fafc;
+margin-bottom:35px;
+}
+
+/* SALES TEXT */
+.sales{
+font-size:1.45rem;
+color:var(--soft);
+}
+
+/* LIST */
+ul{
+list-style:none;
+margin-top:40px;
+}
+
+ul li{
+font-size:1.4rem;
+margin-bottom:22px;
+padding-left:35px;
+position:relative;
+}
+
+ul li::before{
+content:"⚡";
+position:absolute;
+left:0;
+color:var(--glow);
+}
+
+/* ================= FINAL CTA ================= */
+.cta{
+background:linear-gradient(135deg,#1e40af,#3b82f6);
+padding:180px 40px;
+border-radius:80px;
+text-align:center;
+box-shadow:0 0 180px rgba(59,130,246,1);
+opacity:0;
+transform:scale(.8);
+transition:1.2s;
+}
+
+.cta.show{
+opacity:1;
+transform:scale(1);
+}
+
+.cta h2{
+font-size:4rem;
+margin-bottom:40px;
+text-shadow:0 0 45px #93c5fd;
+}
+
+.cta p{
+font-size:1.6rem;
+color:#dbeafe;
+margin-bottom:55px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+text-align:center;
+padding:40px;
+font-size:14px;
+color:#93c5fd;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+.hero h1{font-size:3.2rem}
+.hero p{font-size:1.3rem}
+.card h2{font-size:2.6rem}
+.definition{font-size:1.5rem}
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<header>
+<div class="hero">
+<h1>AutoLab Systems</h1>
+<p>
+The AI-powered growth engine that replaces manual prospecting,
+sales teams, and inconsistent outbound —
+and fills your calendar with qualified B2B meetings automatically.
+</p>
+<a href="#learn" class="btn">See AutoLab in Action ↓</a>
+</div>
+</header>
+
+<section id="learn">
+
+<div class="card animate">
+<h2>What Is AutoLab Systems?</h2>
+<p class="definition">
+AutoLab Systems is an advanced AI-powered outbound automation platform
+designed to generate predictable, scalable B2B growth without human sales teams.
+</p>
+<p class="sales">
+It replaces manual prospecting, cold outreach, and follow-ups with one
+intelligent system that works 24/7 to book qualified meetings automatically.
+</p>
+</div>
+
+<div class="card animate">
+<h2>What Problem Does AutoLab Solve?</h2>
+<p class="definition">
+Most B2B companies struggle with inconsistent leads, wasted sales time,
+and unpredictable revenue.
+</p>
+<p class="sales">
+AutoLab Systems removes these bottlenecks by automating the entire outbound
+sales process using artificial intelligence.
+</p>
+</div>
+
+<div class="card animate">
+<h2>What Does AutoLab Systems Do?</h2>
+<ul>
+<li>Identifies ideal B2B prospects automatically</li>
+<li>Sends ultra-personalized AI outreach messages</li>
+<li>Follows up intelligently until conversion</li>
+<li>Books meetings directly into your calendar</li>
+<li>Operates nonstop without SDRs or sales teams</li>
+</ul>
+</div>
+
+<div class="card animate">
+<h2>How AutoLab Systems Helps You Grow</h2>
+<p class="definition">
+AutoLab Systems turns outbound sales into a predictable growth machine.
+</p>
+<p class="sales">
+You receive booked meetings with decision-makers while the system handles
+prospecting, messaging, and follow-ups automatically.
+</p>
+</div>
+
+<div class="card animate">
+<h2>Why AutoLab Systems Is Different</h2>
+<p class="definition">
+This is not just another outreach tool — it is a complete AI growth system.
+</p>
+<ul>
+<li>No hiring sales reps</li>
+<li>No cold calling</li>
+<li>No manual outreach</li>
+<li>Unlimited scalability</li>
+</ul>
+</div>
+
+<div class="card animate">
+<h2>Who Is AutoLab Systems For?</h2>
+<p class="definition">
+AutoLab Systems is built for B2B service companies that depend on meetings to grow.
+</p>
+<ul>
+<li>Marketing agencies</li>
+<li>Consultants & coaches</li>
+<li>SaaS companies</li>
+<li>B2B service providers</li>
+</ul>
+</div>
+
+</section>
+
+<section class="cta animate">
+<h2>Let AI Run Your Growth</h2>
+<p>
+AutoLab Systems works around the clock to turn cold prospects
+into booked meetings — while you close deals 🚀
+</p>
+<a href="https://autolab-systems.carrd.co/" target="_blank" class="btn">
+Visit AutoLab Systems →
+</a>
+</section>
+
+<footer>
+© 2026 AutoLab Systems — AI B2B Growth Automation
+</footer>
+
+<script>
+/* SCROLL ANIMATIONS */
+const items=document.querySelectorAll(".animate");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add("show")}
+});
+},{threshold:.25});
+items.forEach(i=>observer.observe(i));
+
+/* GLOW CURSOR */
+const glow=document.querySelector(".glow");
+document.addEventListener("mousemove",e=>{
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
+});
+</script>
+
+</body>
+</html>
