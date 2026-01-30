@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoLab Systems – The AI Growth Engine</title>
+<title>AutoLab Systems – AI B2B Growth Engine</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -227,6 +227,83 @@ color:#93c5fd;
 .card h2{font-size:2.6rem}
 .definition{font-size:1.5rem}
 }
+/* ================= MOBILE VERSION ONLY ================= */
+@media (max-width: 768px){
+
+/* HERO */
+.hero{
+padding:20px;
+}
+
+.hero h1{
+font-size:2.5rem;
+line-height:1.2;
+}
+
+.hero p{
+font-size:1.15rem;
+margin-bottom:35px;
+}
+
+/* BUTTON */
+.btn{
+padding:16px 36px;
+font-size:1rem;
+}
+
+/* SECTIONS */
+section{
+padding:90px 16px;
+}
+
+/* CARDS */
+.card{
+padding:32px 24px;
+border-radius:28px;
+margin-bottom:60px;
+}
+
+.card h2{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+.definition{
+font-size:1.25rem;
+}
+
+.sales{
+font-size:1.05rem;
+}
+
+/* LIST */
+ul li{
+font-size:1.05rem;
+padding-left:26px;
+}
+
+/* CTA */
+.cta{
+padding:90px 24px;
+border-radius:45px;
+}
+
+.cta h2{
+font-size:2.3rem;
+}
+
+.cta p{
+font-size:1.15rem;
+}
+
+/* GLOW (lighter on mobile) */
+.glow{
+width:220px;
+height:220px;
+opacity:.4;
+}
+}
+
 </style>
 </head>
 
@@ -347,14 +424,18 @@ if(e.isIntersecting){e.target.classList.add("show")}
 },{threshold:.25});
 items.forEach(i=>observer.observe(i));
 
-/* GLOW CURSOR */
+/* GLOW CURSOR – DESKTOP ONLY */
+if(window.innerWidth > 768){
 const glow=document.querySelector(".glow");
 document.addEventListener("mousemove",e=>{
 glow.style.left=e.clientX+"px";
 glow.style.top=e.clientY+"px";
 });
+}else{
+document.querySelector(".glow").style.display="none";
+}
 </script>
+
 
 </body>
 </html>
-
