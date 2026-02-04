@@ -27,6 +27,7 @@ line-height:1.8;
 overflow-x:hidden;
 }
 
+/* GLOW */
 .glow{
 position:fixed;
 width:400px;
@@ -39,6 +40,7 @@ transform:translate(-50%,-50%);
 z-index:1;
 }
 
+/* HERO */
 header{
 min-height:100vh;
 background:
@@ -91,6 +93,7 @@ color:var(--soft);
 margin-bottom:50px;
 }
 
+/* BUTTON */
 .btn{
 padding:22px 70px;
 border-radius:999px;
@@ -108,12 +111,14 @@ transform:scale(1.18);
 box-shadow:0 0 120px rgba(96,165,250,1);
 }
 
+/* SECTIONS */
 section{
 max-width:1350px;
 margin:auto;
 padding:140px 20px;
 }
 
+/* CARDS */
 .card{
 background:var(--card);
 padding:80px;
@@ -169,6 +174,7 @@ left:0;
 color:var(--glow);
 }
 
+/* CTA */
 .cta{
 background:linear-gradient(135deg,#1e40af,#3b82f6);
 padding:180px 40px;
@@ -204,7 +210,7 @@ font-size:14px;
 color:#93c5fd;
 }
 
-/* EMAIL FLOATING */
+/* EMAIL FLOAT */
 .email-float{
 position:fixed;
 right:25px;
@@ -234,17 +240,22 @@ box-shadow:0 0 45px rgba(234,67,53,1);
 70%{box-shadow:0 0 0 22px rgba(234,67,53,0)}
 100%{box-shadow:0 0 0 0 rgba(234,67,53,0)}
 }
-/* EMAIL – MOBILE FIX */
-@media (max-width: 768px){
-.email-float{
-width:52px;
-height:52px;
-right:16px;
-bottom:16px;
-font-size:22px;
-}
-}
 
+/* ===== MOBILE FIX ===== */
+@media (max-width:768px){
+.hero h1{font-size:2.2rem}
+.hero p{font-size:1rem}
+.btn{padding:14px 28px;font-size:.95rem}
+.card{padding:22px 18px;border-radius:22px}
+.card h2{font-size:1.6rem}
+.definition{font-size:1.05rem}
+.sales{font-size:.95rem}
+ul li{font-size:.95rem;padding-left:22px}
+.cta{padding:70px 18px;border-radius:32px}
+.cta h2{font-size:1.9rem}
+.cta p{font-size:1rem}
+.glow{display:none}
+}
 </style>
 </head>
 
@@ -355,11 +366,8 @@ Visit AutoLab Systems →
 © 2026 AutoLab Systems — AI B2B Growth Automation
 </footer>
 
-<!-- EMAIL FLOATING -->
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=autolabsystem@gmail.com"
-   target="_blank"
-   class="email-float"
-   title="Contact AutoLab Systems">📧</a>
+class="email-float" target="_blank">📧</a>
 
 <script>
 const items=document.querySelectorAll(".animate");
@@ -376,8 +384,6 @@ document.addEventListener("mousemove",e=>{
 glow.style.left=e.clientX+"px";
 glow.style.top=e.clientY+"px";
 });
-}else{
-document.querySelector(".glow").style.display="none";
 }
 </script>
 
