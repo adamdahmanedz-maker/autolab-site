@@ -256,6 +256,127 @@ ul li{font-size:.95rem;padding-left:22px}
 .cta p{font-size:1rem}
 .glow{display:none}
 }
+/* TOOLTIP EMAIL */
+.email-float::after{
+content:attr(data-tooltip);
+position:absolute;
+right:75px;
+bottom:50%;
+transform:translateY(50%);
+background:#020617;
+color:#e5e7eb;
+padding:10px 14px;
+border-radius:10px;
+font-size:14px;
+white-space:nowrap;
+opacity:0;
+pointer-events:none;
+box-shadow:0 0 25px rgba(96,165,250,.8);
+transition:.3s ease;
+}
+
+.email-float:hover::after{
+opacity:1;
+}
+/* INSTAGRAM FLOAT */
+.instagram-float{
+position:fixed;
+right:25px;
+bottom:100px;
+width:60px;
+height:60px;
+background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 0 25px rgba(253,29,29,.9);
+transition:.3s;
+}
+
+.instagram-float:hover{
+transform:scale(1.15);
+box-shadow:0 0 45px rgba(253,29,29,1);
+}
+
+/* TOOLTIP (shared style) */
+.email-float::after,
+.instagram-float::after{
+content:attr(data-tooltip);
+position:absolute;
+right:75px;
+bottom:50%;
+transform:translateY(50%);
+background:#020617;
+color:#e5e7eb;
+padding:10px 14px;
+border-radius:10px;
+font-size:14px;
+white-space:nowrap;
+opacity:0;
+pointer-events:none;
+box-shadow:0 0 25px rgba(96,165,250,.8);
+transition:.3s ease;
+}
+
+.email-float:hover::after,
+.instagram-float:hover::after{
+opacity:1;
+}
+/* ===== MOBILE CONTACT BAR ===== */
+.mobile-contact-bar{
+display:none;
+}
+
+/* MOBILE MODE */
+@media (max-width:768px){
+body{
+padding-bottom:90px;
+}
+
+
+/* cacher les boutons flottants */
+.email-float,
+.instagram-float{
+display:none;
+}
+
+/* afficher la barre */
+.mobile-contact-bar{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:linear-gradient(135deg,#1e40af,#3b82f6);
+display:flex;
+justify-content:space-around;
+align-items:center;
+padding:14px 10px;
+z-index:9999;
+box-shadow:0 -8px 30px rgba(59,130,246,.8);
+}
+
+/* style des liens */
+.mobile-contact-bar a{
+color:white;
+text-decoration:none;
+font-weight:700;
+font-size:14px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+/* petit effet hover/touch */
+.mobile-contact-bar a:active{
+transform:scale(.95);
+}
+}
+
 </style>
 </head>
 
@@ -267,9 +388,8 @@ ul li{font-size:.95rem;padding-left:22px}
 <div class="hero">
 <h1>AutoLab Systems</h1>
 <p>
-The AI-powered growth engine that replaces manual prospecting,
-sales teams, and inconsistent outbound —
-and fills your calendar with qualified B2B meetings automatically.
+This website is built to present AutoLab Systems, explain how it works,
+and allow businesses to contact us for AI-powered growth solutions.
 </p>
 <a href="#learn" class="btn">See AutoLab in Action ↓</a>
 </div>
@@ -365,9 +485,30 @@ Visit AutoLab Systems →
 <footer>
 © 2026 AutoLab Systems — AI B2B Growth Automation
 </footer>
+<a href="https://www.instagram.com/autolabsystems"
+class="instagram-float"
+target="_blank"
+data-tooltip="Follow us on Instagram">
+📸
+</a>
 
 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=autolabsystem@gmail.com"
-class="email-float" target="_blank">📧</a>
+class="email-float"
+target="_blank"
+data-tooltip="Contact us for business inquiries">
+📧
+</a>
+<div class="mobile-contact-bar">
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=autolabsystem@gmail.com" target="_blank">
+    📧 <span>Business Email</span>
+  </a>
+
+  <a href="https://www.instagram.com/autolabsystems" target="_blank">
+    📸 <span>Contact us on Instagram</span>
+  </a>
+</div>
+
+
 
 <script>
 const items=document.querySelectorAll(".animate");
