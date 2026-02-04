@@ -8,10 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-/* ================= RESET ================= */
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* ================= VARIABLES ================= */
 :root{
 --blue:#3b82f6;
 --glow:#60a5fa;
@@ -21,7 +19,6 @@
 --soft:#c7d2fe;
 }
 
-/* ================= BODY ================= */
 body{
 font-family:'Inter',sans-serif;
 background:#020617;
@@ -30,7 +27,6 @@ line-height:1.8;
 overflow-x:hidden;
 }
 
-/* ================= GLOW CURSOR ================= */
 .glow{
 position:fixed;
 width:400px;
@@ -43,7 +39,6 @@ transform:translate(-50%,-50%);
 z-index:1;
 }
 
-/* ================= HERO ================= */
 header{
 min-height:100vh;
 background:
@@ -56,13 +51,11 @@ position:relative;
 overflow:hidden;
 }
 
-/* MOVING AI GRID */
 header::before{
 content:"";
 position:absolute;
 inset:0;
-background:
-repeating-linear-gradient(
+background:repeating-linear-gradient(
 120deg,
 rgba(96,165,250,.12),
 rgba(96,165,250,.12) 1px,
@@ -77,7 +70,6 @@ from{background-position:0 0}
 to{background-position:1000px 1000px}
 }
 
-/* HERO CONTENT */
 .hero{
 position:relative;
 z-index:2;
@@ -99,7 +91,6 @@ color:var(--soft);
 margin-bottom:50px;
 }
 
-/* ================= BUTTON ================= */
 .btn{
 padding:22px 70px;
 border-radius:999px;
@@ -117,14 +108,12 @@ transform:scale(1.18);
 box-shadow:0 0 120px rgba(96,165,250,1);
 }
 
-/* ================= SECTION ================= */
 section{
 max-width:1350px;
 margin:auto;
 padding:140px 20px;
 }
 
-/* ================= CARD ================= */
 .card{
 background:var(--card);
 padding:80px;
@@ -149,7 +138,6 @@ color:var(--glow);
 text-shadow:0 0 35px rgba(96,165,250,1);
 }
 
-/* BIG DEFINITION */
 .definition{
 font-size:1.9rem;
 font-weight:800;
@@ -157,13 +145,11 @@ color:#f8fafc;
 margin-bottom:35px;
 }
 
-/* SALES TEXT */
 .sales{
 font-size:1.45rem;
 color:var(--soft);
 }
 
-/* LIST */
 ul{
 list-style:none;
 margin-top:40px;
@@ -183,7 +169,6 @@ left:0;
 color:var(--glow);
 }
 
-/* ================= FINAL CTA ================= */
 .cta{
 background:linear-gradient(135deg,#1e40af,#3b82f6);
 padding:180px 40px;
@@ -212,7 +197,6 @@ color:#dbeafe;
 margin-bottom:55px;
 }
 
-/* ================= FOOTER ================= */
 footer{
 text-align:center;
 padding:40px;
@@ -220,87 +204,44 @@ font-size:14px;
 color:#93c5fd;
 }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:900px){
-.hero h1{font-size:3.2rem}
-.hero p{font-size:1.3rem}
-.card h2{font-size:2.6rem}
-.definition{font-size:1.5rem}
+/* EMAIL FLOATING */
+.email-float{
+position:fixed;
+right:25px;
+bottom:25px;
+width:60px;
+height:60px;
+background:#ea4335;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 0 25px rgba(234,67,53,.9);
+animation:pulseEmail 2.2s infinite;
 }
-/* ================= MOBILE VERSION ONLY ================= */
+
+.email-float:hover{
+transform:scale(1.15);
+box-shadow:0 0 45px rgba(234,67,53,1);
+}
+
+@keyframes pulseEmail{
+0%{box-shadow:0 0 0 0 rgba(234,67,53,.7)}
+70%{box-shadow:0 0 0 22px rgba(234,67,53,0)}
+100%{box-shadow:0 0 0 0 rgba(234,67,53,0)}
+}
+/* EMAIL – MOBILE FIX */
 @media (max-width: 768px){
-
-/* HERO */
-.hero{
-padding:20px;
-}
-
-.hero h1{
-font-size:2.5rem;
-line-height:1.2;
-}
-
-.hero p{
-font-size:1.15rem;
-margin-bottom:35px;
-}
-
-/* BUTTON */
-.btn{
-padding:16px 36px;
-font-size:1rem;
-}
-
-/* SECTIONS */
-section{
-padding:90px 16px;
-}
-
-/* CARDS */
-.card{
-padding:32px 24px;
-border-radius:28px;
-margin-bottom:60px;
-}
-
-.card h2{
-font-size:2rem;
-margin-bottom:20px;
-}
-
-.definition{
-font-size:1.25rem;
-}
-
-.sales{
-font-size:1.05rem;
-}
-
-/* LIST */
-ul li{
-font-size:1.05rem;
-padding-left:26px;
-}
-
-/* CTA */
-.cta{
-padding:90px 24px;
-border-radius:45px;
-}
-
-.cta h2{
-font-size:2.3rem;
-}
-
-.cta p{
-font-size:1.15rem;
-}
-
-/* GLOW (lighter on mobile) */
-.glow{
-width:220px;
-height:220px;
-opacity:.4;
+.email-float{
+width:52px;
+height:52px;
+right:16px;
+bottom:16px;
+font-size:22px;
 }
 }
 
@@ -414,8 +355,13 @@ Visit AutoLab Systems →
 © 2026 AutoLab Systems — AI B2B Growth Automation
 </footer>
 
+<!-- EMAIL FLOATING -->
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=autolabsystem@gmail.com"
+   target="_blank"
+   class="email-float"
+   title="Contact AutoLab Systems">📧</a>
+
 <script>
-/* SCROLL ANIMATIONS */
 const items=document.querySelectorAll(".animate");
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
@@ -424,7 +370,6 @@ if(e.isIntersecting){e.target.classList.add("show")}
 },{threshold:.25});
 items.forEach(i=>observer.observe(i));
 
-/* GLOW CURSOR – DESKTOP ONLY */
 if(window.innerWidth > 768){
 const glow=document.querySelector(".glow");
 document.addEventListener("mousemove",e=>{
@@ -435,7 +380,6 @@ glow.style.top=e.clientY+"px";
 document.querySelector(".glow").style.display="none";
 }
 </script>
-
 
 </body>
 </html>
