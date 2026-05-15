@@ -7,9 +7,13 @@
 <title>AutoLab Systems – AI B2B Growth Engine</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+<link rel="icon" type="image/png" sizes="128x128" href="logo.png">
+<link rel="stylesheet" href="style.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;
+  box-sizing:border-box;
+  animation:heroFade 1.5s ease;
+}
 
 :root{
 --blue:#3b82f6;
@@ -236,10 +240,15 @@ transform:scale(1.15);
 box-shadow:0 0 45px rgba(234,67,53,1);
 }
 
-@keyframes pulseEmail{
-0%{box-shadow:0 0 0 0 rgba(234,67,53,.7)}
-70%{box-shadow:0 0 0 22px rgba(234,67,53,0)}
-100%{box-shadow:0 0 0 0 rgba(234,67,53,0)}
+@keyframes heroFade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* ===== MOBILE FIX ===== */
@@ -522,14 +531,47 @@ if(e.isIntersecting){e.target.classList.add("show")}
 items.forEach(i=>observer.observe(i));
 
 if(window.innerWidth > 768){
+
 const glow=document.querySelector(".glow");
-document.addEventListener("mousemove",e=>{
-glow.style.left=e.clientX+"px";
-glow.style.top=e.clientY+"px";
+
+let mouseX=0, mouseY=0;
+let currentX=0, currentY=0;
+
+let lastX=0;
+let lastY=0;
+let speed=0;
+
+document.addEventListener("mousemove",(e)=>{
+mouseX=e.clientX;
+mouseY=e.clientY;
+
+// 🔥 calcul vitesse souris
+speed = Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY);
+
+lastX=e.clientX;
+lastY=e.clientY;
 });
+
+function animateGlow(){
+
+// smooth follow
+currentX += (mouseX - currentX) * 0.25;
+currentY += (mouseY - currentY) * 0.25;
+
+glow.style.left=currentX+"px";
+glow.style.top=currentY+"px";
+
+
+requestAnimationFrame(animateGlow);
+}
+
+animateGlow();
+
 }
 </script>
 
 </body>
+</html>
+
 </html>
 
