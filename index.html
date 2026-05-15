@@ -8,11 +8,7 @@
 
 <title>AutoLab Systems – AI B2B Growth Engine</title>
 
-<!-- GOOGLE FONTS (CORRECT) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <!-- FAVICON -->
 <link rel="icon" type="image/png" sizes="128x128" href="logo.png">
@@ -41,7 +37,7 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Inter',sans-serif;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 background:#020617;
 color:var(--text);
 line-height:1.8;
@@ -566,53 +562,64 @@ data-tooltip="Contact us for business inquiries">
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-const items=document.querySelectorAll(".animate");
+  /* =========================
+     SCROLL ANIMATION
+  ========================= */
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add("show");
-}
+  const items = document.querySelectorAll(".animate");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        obs.unobserve(entry.target); // 💡 optimise performance
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  items.forEach(item => observer.observe(item));
+
+
+  /* =========================
+     GLOW EFFECT (DESKTOP ONLY)
+  ========================= */
+
+  if (window.innerWidth > 768) {
+
+    const glow = document.querySelector(".glow");
+    if (!glow) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+
+    function animateGlow() {
+
+      // smoothing (lerp)
+      currentX += (mouseX - currentX) * 0.4;
+      currentY += (mouseY - currentY) * 0.4;
+
+      glow.style.transform =
+        `translate(${currentX - 200}px, ${currentY - 200}px)`;
+
+      requestAnimationFrame(animateGlow);
+    }
+
+    animateGlow();
+  }
+
 });
-},{
-threshold:.15
-});
-
-items.forEach(i=>observer.observe(i));
-
-if(window.innerWidth > 768){
-
-const glow=document.querySelector(".glow");
-
-let mouseX=0;
-let mouseY=0;
-
-let currentX=0;
-let currentY=0;
-
-document.addEventListener("mousemove",(e)=>{
-mouseX=e.clientX;
-mouseY=e.clientY;
-});
-
-function animateGlow(){
-
-currentX += (mouseX-currentX)*0.4;
-currentY += (mouseY-currentY)*0.4;
-
-glow.style.transform =
-`translate(${currentX-200}px, ${currentY-200}px)`;
-
-requestAnimationFrame(animateGlow);
-}
-
-animateGlow();
-
-}
-
-window.scrollTo(0,0);
-
 </script>
 
 </body>
