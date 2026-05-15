@@ -73,7 +73,7 @@ header{
 min-height:100vh;
 background:
 linear-gradient(rgba(2,6,23,.85),rgba(2,6,23,.95)),
-url("./autolab-bg.webp") center/cover;
+url("./autolab-bg.png") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -85,21 +85,48 @@ header::before{
 content:"";
 position:absolute;
 inset:0;
-background:repeating-linear-gradient(
+
+background:
+repeating-linear-gradient(
 120deg,
-rgba(96,165,250,.12),
-rgba(96,165,250,.12) 1px,
+rgba(96,165,250,.08) 0px,
+rgba(96,165,250,.08) 1px,
 transparent 1px,
-transparent 100px
+transparent 80px
 );
-animation:gridMove 15s linear infinite;
+
+background-size:200px 200px;
+
+animation:gridMove 35s linear infinite;
+
+will-change:background-position;
+
+/* FADE SMOOTH */
+mask-image:linear-gradient(
+to bottom,
+rgba(0,0,0,1) 0%,
+rgba(0,0,0,.9) 60%,
+rgba(0,0,0,.3) 85%,
+transparent 100%
+);
+
+-webkit-mask-image:linear-gradient(
+to bottom,
+rgba(0,0,0,1) 0%,
+rgba(0,0,0,.9) 60%,
+rgba(0,0,0,.3) 85%,
+transparent 100%
+);
 }
 
 @keyframes gridMove{
-from{background-position:0 0}
-to{background-position:1000px 1000px}
+from{
+background-position:0 0;
 }
-
+to{
+background-position:200px 200px;
+}
+}
 .hero{
 position:relative;
 z-index:2;
@@ -424,6 +451,7 @@ This website is built to present AutoLab Systems, explain how it works,
 and allow businesses to contact us for AI-powered growth solutions.
 </p>
 <a href="#learn" class="btn">See AutoLab in Action ↓</a>
+
 </div>
 </header>
 
@@ -575,8 +603,8 @@ mouseY=e.clientY;
 
 function animateGlow(){
 
-currentX += (mouseX-currentX)*0.12;
-currentY += (mouseY-currentY)*0.12;
+currentX += (mouseX-currentX)*0.4;
+currentY += (mouseY-currentY)*0.4;
 
 glow.style.transform =
 `translate(${currentX-200}px, ${currentY-200}px)`;
@@ -594,4 +622,3 @@ window.scrollTo(0,0);
 
 </body>
 </html>
-
