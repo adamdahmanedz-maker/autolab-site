@@ -6,12 +6,30 @@
 <meta name="description" content="AutoLab Systems is an AI-powered B2B automation platform that generates qualified leads and books meetings automatically, replacing manual prospecting and sales outreach.">
 <title>AutoLab Systems – AI B2B Growth Engine</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="128x128" href="logo.png"> 
+<!-- GOOGLE FONT OPTIMISÉ -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+
+<!-- PRELOAD POUR LCP REQUEST DISCOVERY -->
+<link rel="preload" href="https://gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50Kn42iw.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- CHARGEMENT ASYNCHRONE POUR SUPPRIMER LA DEPENDANCE RESEAU -->
+<link href="https://googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+<link href="https://googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</noscript>
+
+<!-- LOGO -->
+<link rel="icon" type="image/png" sizes="128x128" href="logo.png">
+<link rel="shortcut icon" href="logo.png" type="image/png">
+
 <style>
-*{margin:0;padding:0;
-  box-sizing:border-box;
-  animation:heroFade 1.5s ease;
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 :root{
@@ -21,6 +39,10 @@
 --card:rgba(15,23,42,.96);
 --text:#e5e7eb;
 --soft:#c7d2fe;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
@@ -34,14 +56,16 @@ overflow-x:hidden;
 /* GLOW */
 .glow{
 position:fixed;
+left:0;
+top:0;
 width:400px;
 height:400px;
 border-radius:50%;
 pointer-events:none;
-background:radial-gradient(circle, rgba(96,165,250,.25), transparent 70%);
+background:radial-gradient(circle, rgba(96,165,250,.20), transparent 70%);
 mix-blend-mode:screen;
-transform:translate(-50%,-50%);
 z-index:1;
+will-change:transform;
 }
 
 /* HERO */
@@ -49,7 +73,7 @@ header{
 min-height:100vh;
 background:
 linear-gradient(rgba(2,6,23,.85),rgba(2,6,23,.95)),
-url("./autolab-bg.png") center/cover;
+url("./autolab-bg.webp") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -82,6 +106,7 @@ z-index:2;
 text-align:center;
 max-width:1200px;
 padding:40px;
+animation:heroFade 1.2s ease;
 }
 
 .hero h1{
@@ -111,7 +136,7 @@ transition:.35s;
 }
 
 .btn:hover{
-transform:scale(1.18);
+transform:scale(1.08);
 box-shadow:0 0 120px rgba(96,165,250,1);
 }
 
@@ -129,10 +154,11 @@ padding:80px;
 border-radius:50px;
 margin-bottom:100px;
 border:1px solid rgba(96,165,250,.25);
-box-shadow:0 0 120px rgba(59,130,246,.4);
+box-shadow:0 0 120px rgba(59,130,246,.25);
 opacity:0;
 transform:translateY(120px);
-transition:1.2s;
+transition:1s;
+will-change:transform, opacity;
 }
 
 .card.show{
@@ -184,10 +210,10 @@ background:linear-gradient(135deg,#1e40af,#3b82f6);
 padding:180px 40px;
 border-radius:80px;
 text-align:center;
-box-shadow:0 0 180px rgba(59,130,246,1);
+box-shadow:0 0 180px rgba(59,130,246,.45);
 opacity:0;
 transform:scale(.8);
-transition:1.2s;
+transition:1s;
 }
 
 .cta.show{
@@ -207,6 +233,7 @@ color:#dbeafe;
 margin-bottom:55px;
 }
 
+/* FOOTER */
 footer{
 text-align:center;
 padding:40px;
@@ -214,87 +241,13 @@ font-size:14px;
 color:#93c5fd;
 }
 
-/* EMAIL FLOAT */
-.email-float{
-position:fixed;
-right:25px;
-bottom:25px;
-width:60px;
-height:60px;
-background:#ea4335;
-color:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:26px;
-text-decoration:none;
-z-index:9999;
-box-shadow:0 0 25px rgba(234,67,53,.9);
-animation:pulseEmail 2.2s infinite;
-}
-
-.email-float:hover{
-transform:scale(1.15);
-box-shadow:0 0 45px rgba(234,67,53,1);
-}
-
-@keyframes heroFade{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* ===== MOBILE FIX ===== */
-@media (max-width:768px){
-.hero h1{font-size:2.2rem}
-.hero p{font-size:1rem}
-.btn{padding:14px 28px;font-size:.95rem}
-.card{padding:22px 18px;border-radius:22px}
-.card h2{font-size:1.6rem}
-.definition{font-size:1.05rem}
-.sales{font-size:.95rem}
-ul li{font-size:.95rem;padding-left:22px}
-.cta{padding:70px 18px;border-radius:32px}
-.cta h2{font-size:1.9rem}
-.cta p{font-size:1rem}
-.glow{display:none}
-}
-/* TOOLTIP EMAIL */
-.email-float::after{
-content:attr(data-tooltip);
-position:absolute;
-right:75px;
-bottom:50%;
-transform:translateY(50%);
-background:#020617;
-color:#e5e7eb;
-padding:10px 14px;
-border-radius:10px;
-font-size:14px;
-white-space:nowrap;
-opacity:0;
-pointer-events:none;
-box-shadow:0 0 25px rgba(96,165,250,.8);
-transition:.3s ease;
-}
-
-.email-float:hover::after{
-opacity:1;
-}
-/* INSTAGRAM FLOAT */
+/* FLOATS */
+.email-float,
 .instagram-float{
 position:fixed;
 right:25px;
-bottom:100px;
 width:60px;
 height:60px;
-background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
 color:white;
 border-radius:50%;
 display:flex;
@@ -303,16 +256,27 @@ justify-content:center;
 font-size:26px;
 text-decoration:none;
 z-index:9999;
-box-shadow:0 0 25px rgba(253,29,29,.9);
 transition:.3s;
 }
 
-.instagram-float:hover{
-transform:scale(1.15);
-box-shadow:0 0 45px rgba(253,29,29,1);
+.email-float{
+bottom:25px;
+background:#ea4335;
+box-shadow:0 0 25px rgba(234,67,53,.9);
 }
 
-/* TOOLTIP (shared style) */
+.instagram-float{
+bottom:100px;
+background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+box-shadow:0 0 25px rgba(253,29,29,.9);
+}
+
+.email-float:hover,
+.instagram-float:hover{
+transform:scale(1.1);
+}
+
+/* TOOLTIP */
 .email-float::after,
 .instagram-float::after{
 content:attr(data-tooltip);
@@ -336,26 +300,75 @@ transition:.3s ease;
 .instagram-float:hover::after{
 opacity:1;
 }
-/* ===== MOBILE CONTACT BAR ===== */
+
+/* MOBILE */
 .mobile-contact-bar{
 display:none;
 }
 
-/* MOBILE MODE */
 @media (max-width:768px){
-  body{
+
+body{
 padding-bottom:110px;
 }
 
+.hero h1{
+font-size:2.2rem;
+}
 
+.hero p{
+font-size:1rem;
+}
 
-/* cacher les boutons flottants */
+.btn{
+padding:14px 28px;
+font-size:.95rem;
+}
+
+.card{
+padding:22px 18px;
+border-radius:22px;
+}
+
+.card h2{
+font-size:1.6rem;
+}
+
+.definition{
+font-size:1.05rem;
+}
+
+.sales{
+font-size:.95rem;
+}
+
+ul li{
+font-size:.95rem;
+padding-left:22px;
+}
+
+.cta{
+padding:70px 18px;
+border-radius:32px;
+}
+
+.cta h2{
+font-size:1.9rem;
+}
+
+.cta p{
+font-size:1rem;
+}
+
+.glow{
+display:none;
+}
+
 .email-float,
 .instagram-float{
 display:none;
 }
 
-/* afficher la barre */
 .mobile-contact-bar{
 position:fixed;
 bottom:0;
@@ -370,7 +383,6 @@ z-index:9999;
 box-shadow:0 -8px 30px rgba(59,130,246,.8);
 }
 
-/* style des liens */
 .mobile-contact-bar a{
 color:white;
 text-decoration:none;
@@ -381,9 +393,19 @@ align-items:center;
 gap:8px;
 }
 
-/* petit effet hover/touch */
 .mobile-contact-bar a:active{
 transform:scale(.95);
+}
+}
+
+@keyframes heroFade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
 }
 }
 
@@ -487,7 +509,7 @@ AutoLab Systems is built for B2B service companies that depend on meetings to gr
 AutoLab Systems works around the clock to turn cold prospects
 into booked meetings — while you close deals 🚀
 </p>
-<a href="https://autolab-systems.carrd.co/" target="_blank" class="btn">
+<a href="https://carrd.co" target="_blank" class="btn">
 Visit AutoLab Systems →
 </a>
 </section>
@@ -495,71 +517,69 @@ Visit AutoLab Systems →
 <footer>
 © 2026 AutoLab Systems — AI B2B Growth Automation
 </footer>
-<a href="https://www.instagram.com/autolab.systems/"
+
+<a href="https://instagram.com"
 class="instagram-float"
 target="_blank"
 data-tooltip="Follow us on Instagram">
 📸
 </a>
 
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=autolabsystem@gmail.com"
+<a href="https://google.com"
 class="email-float"
 target="_blank"
 data-tooltip="Contact us for business inquiries">
 📧
 </a>
+
 <div class="mobile-contact-bar">
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=autolabsystem@gmail.com" target="_blank">
+  <a href="https://google.com" target="_blank">
     📧 <span>Business Email</span>
   </a>
 
-  <a href="https://www.instagram.com/autolab.systems/" target="_blank">
+  <a href="https://instagram.com" target="_blank">
     📸 <span>Contact us on Instagram</span>
   </a>
 </div>
 
-
-
 <script>
+
 const items=document.querySelectorAll(".animate");
+
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add("show")}
+if(e.isIntersecting){
+e.target.classList.add("show");
+}
 });
-},{threshold:.25});
+},{
+threshold:.15
+});
+
 items.forEach(i=>observer.observe(i));
 
 if(window.innerWidth > 768){
 
 const glow=document.querySelector(".glow");
 
-let mouseX=0, mouseY=0;
-let currentX=0, currentY=0;
+let mouseX=0;
+let mouseY=0;
 
-let lastX=0;
-let lastY=0;
-let speed=0;
+let currentX=0;
+let currentY=0;
 
 document.addEventListener("mousemove",(e)=>{
 mouseX=e.clientX;
 mouseY=e.clientY;
-
-// 🔥 calcul vitesse souris
-speed = Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY);
-
-lastX=e.clientX;
-lastY=e.clientY;
 });
 
 function animateGlow(){
 
-// smooth follow
-currentX += (mouseX - currentX) * 0.25;
-currentY += (mouseY - currentY) * 0.25;
+currentX += (mouseX-currentX)*0.12;
+currentY += (mouseY-currentY)*0.12;
 
-glow.style.left=currentX+"px";
-glow.style.top=currentY+"px";
-
+glow.style.transform =
+`translate(${currentX-200}px, ${currentY-200}px)`;
 
 requestAnimationFrame(animateGlow);
 }
@@ -567,10 +587,11 @@ requestAnimationFrame(animateGlow);
 animateGlow();
 
 }
+
+window.scrollTo(0,0);
+
 </script>
 
 </body>
-</html>
-
 </html>
 
